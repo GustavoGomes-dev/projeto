@@ -1,11 +1,5 @@
-package catalago.de.jogos.demo.model;
+package com.example.demo.model;
 
-
-
-import java.util.UUID;
-
-import catalago.de.jogos.demo.dto.JogosDto;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,58 +7,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "Catálogo")
+@Table(name = "catalogo")
 public class JogosModel {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
-	
-	@Column (name = "Nome")
-	private String nome;
-	
-	@Column (name = "Categoria")
-	private String categoria;
-	
-	@Column (name = "Classificação")
-	private String classificação;
-	
-	@Column (name = "Avaliação")
-	private String avaliacao;
-	
-	@Column (name = "Lançamento")
-	private String lancamento;
-	
-	@Column (name = "Descrição")
-	private String descricao;
-
-
-
-	public JogosModel() {
-		
-	}
-
-	public JogosModel(UUID id, String nome, String categoria, String classificação, String avaliacao, String lancamento,
-			String descricao) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.categoria = categoria;
-		this.classificação = classificação;
-		this.avaliacao = avaliacao;
-		this.lancamento = lancamento;
-		this.descricao = descricao;
-	}
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public String getNome() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String categoria;
+    private String classificacao;
+    private String avaliacao;
+    private String lancamento;
+    private String url;
+   
+    
+    public String getNome() {
 		return nome;
 	}
 
@@ -76,18 +32,16 @@ public class JogosModel {
 		return categoria;
 	}
 
-	
-
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
-	public String getClassificação() {
-		return classificação;
+	public String getClassificacao() {
+		return classificacao;
 	}
 
-	public void setClassificação(String classificação) {
-		this.classificação = classificação;
+	public void setClassificacao(String classificacao) {
+		this.classificacao = classificacao;
 	}
 
 	public String getAvaliacao() {
@@ -106,14 +60,21 @@ public class JogosModel {
 		this.lancamento = lancamento;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Long getId() {
+		return id;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 
 }
