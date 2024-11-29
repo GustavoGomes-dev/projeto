@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -37,7 +38,7 @@
                             <input id="Lançamento" type="text" placeholder="Lançamento" required>
                             <input id="Url" type="text" placeholder="Url" required>
                         </div>
-                        <button type="submit" class="confirm-button">Confirmar</button>
+                        <button type="submit" onclick="abrirModal()" class="confirm-button">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -64,11 +65,15 @@
                 </tbody>
             </table>
 
-            <dialog open >
-                <button id="closeModal" class="close-button">&larr;</button>
-                <div class="modal-logo"><img src="src/img/logoControle.png" alt="modal-logo"></div>
-                <p>Realmente deseja excluir o Jogo?</p>
-                <button>Cancelar</button> <button>Excluir</button>
+            <dialog id="modal-Excluir" class="modal-excluir" >
+                <div class="pergunta">
+                    <p>Realmente deseja excluir o Jogo?</p>
+                </div>
+
+                <div class="botoes">
+                    <button class="btnCancelar" onclick="cancelarExclusão()" id="cancelar">Cancelar</button>
+                    <button class="btnExcluir" onclick="excluirJogo()" id="excluir">Excluir</button>
+                </div>
             </dialog>
         </main>
     </div>
