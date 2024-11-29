@@ -1,4 +1,5 @@
 
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -255,3 +256,58 @@ input::placeholder {
 .confirm-button:hover {
     background-color: #0056b3;
 }
+
+dialog.modal-excluir {
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 320px;
+    text-align: center;
+  }
+
+  .modal-excluir::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .pergunta p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .botoes {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btnCancelar, .btnExcluir {
+    width: 48%;
+    padding: 10px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btnCancelar {
+    background-color: #fff;
+    color: black;
+  }
+
+  .btnCancelar:hover {
+    background-color: #e0e0e0;
+  }
+
+  .btnExcluir {
+    background-color: #d50000;
+    color: white;
+  }
+
+  .btnExcluir:hover {
+    background-color: #c40000;
+  }
+
+ 
