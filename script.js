@@ -1,75 +1,56 @@
-// const modal = document.getElementById('modal');
-// const openModalButton = document.getElementById('openModal');
-// const closeModalButton = document.getElementById('closeModal');
-// const confirmButtonModal= document.getElementById('novo');
+// Acessando os elementos do HTML
+const openModalButton = document.getElementById("openModal");
+const modal = document.getElementById("modal");
+const closeModalButton = document.getElementById("closeModal");
+const formCadastro = document.getElementById("formCadastro");
+const listaJogo = document.getElementById("listaJogo");
 
-// openModalButton.addEventListener('click', () => {
-//     modal.classList.add('show');
-// });
+// Abrir o modal
+openModalButton.addEventListener("click", function() {
+    modal.classList.add("show");  // Exibe o modal
+});
 
-// closeModalButton.addEventListener('click', () => {
-//     modal.classList.remove('show');
-// });
+// Fechar o modal
+closeModalButton.addEventListener("click", function() {
+    modal.classList.remove("show");  // Esconde o modal
+});
 
-// // Fecha a modal clicando fora do conteúdo
-// modal.addEventListener('click', (e) => {
-//     if (e.target === modal) {
-//         modal.classList.remove('show');
-//     }
-// });
+// Adicionar um jogo à tabela
+formCadastro.addEventListener("submit", function(event) {
+    event.preventDefault();  // Previne o envio padrão do formulário
 
-async function buscarJogos() {
-  try {
-    const response = await fetch("http://localhost:8080/Jogos"); // Requisição para a API
-    if (response.ok) {
-      const Jogos = await response.json(); // Converte a resposta em JSON
-      exibirJogos(Jogos); // Passa os dados para a função de exibição
-    } else {
-      console.error("Erro na requisição:", response.status);
-    }
-  } catch (error) {
-    console.error("Erro de conexão:", error);
-  }
+    // Coletando dados do formulário
+    const nome = document.getElementById("Nome").value;
+    const categoria = document.getElementById("Categoria").value;
+    const classificacao = document.getElementById("Classificação").value;
+    const avaliacao = document.getElementById("Avaliação").value;
+    const lancamento = document.getElementById("Lançamento").value;
+
+    const novaLinha = document.createElement("tr");
+
+    novaLinha.innerHTML = `
+        <td>${nome}</td>
+        <td>${categoria}</td>
+        <td>${classificacao}</td>
+        <td>${avaliacao}</td>
+        <td>${lancamento}</td>
+        <td><button onclick="removerJogo(this)">🗑️</button> <button onclick="alterarJogo(this)">✏️</button> </td>
+    `;
+
+    listaJogo.appendChild(novaLinha);
+
+    modal.classList.remove("show");
+
+    formCadastro.reset();
+});
+
+
+
+
+
+
+
+
+function removerJogo(button) {
+    button.closest("tr").remove();
 }
-
-// Função para exibir médicos no HTML
-function exibirJogos(Jogos) {
-  const container = document.getElementById("Catalogo_jogos"); // Encontra o container
-
-  // Verifica se há médicos e exibe ou esconde as divs
-  if (Jogos.length === 0) {
-    // Não há médicos
-    container.style.display = "none"; // Esconde o container de médicos
-  } else {
-    // Há médicos
-    container.style.display = "block"; // Exibe o container de médicos
-
-    // Limpa qualquer conteúdo anterior no container
-    container.innerHTML = "";
-
-    // Cria uma div para cada médico
-    Jogos.forEach((Jogos) => {
-      const JogosDiv = document.createElement("div"); // Cria uma nova div para o médico
-      JogosDiv.classList.add("jogo"); // Adiciona uma classe para estilo (opcional)
-
-      // Adiciona o conteúdo da div do médico
-      JogosDiv.innerHTML = `
-                <p class="id">${Jogos.id}</p>
-                <p class="foto_jogo">O</p> <!-- Eu imagino que "O" seja um marcador para foto -->
-                <p class="nome_jogo">${Jogos.nome}</p>
-                <p class="categoria_jogo">${Jogos.categoria}</p>
-                <p class="classificacao_jogo">${Jogos.classificacao}</p>
-                <p class="avaliacao_jogo">${Jogos.avaliacao}</p> 
-                <p class="lancamento jogo">${Jogos.lancamento}</p>  
-                <p class="descricao">${Jogos.descricao}</p> 
-               
-            `;
-
-      // Adiciona a div criada ao container
-      container.appendChild(JogosDiv);
-    });
-  }
-}
-
-// Chama a função para buscar e exibir os médicos ao carregar a página
-buscarJogos();
