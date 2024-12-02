@@ -1,13 +1,11 @@
-package catalago.de.jogos.demo.repository;
-
-import java.util.UUID;
+package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import catalago.de.jogos.demo.model.JogosModel;
+import com.example.demo.model.JogosModel;
 
-@Repository
-public interface JogosRepository extends JpaRepository <JogosModel, UUID> {
+public interface JogosRepository extends JpaRepository <JogosModel, Long>{
+	
+	JogosModel findByNome(String nome);
 
 }
