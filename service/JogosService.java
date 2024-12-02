@@ -18,8 +18,8 @@ public class JogosService {
         return jogosRepository.save(jogo);
     }
 
-    public Optional<JogosModel> getJogoPorId(Long id) {
-        return jogosRepository.findById(id);
+    public JogosModel buscarPorNome(String nome) {
+        return jogosRepository.findByNome(nome); 
     }
 
     public boolean deletarJogo(Long id) {
@@ -40,6 +40,6 @@ public class JogosService {
 
 	public List<JogosModel> listarJogos() {
 		// TODO Auto-generated method stub
-		return null;
+		return jogosRepository.findAll();
 	}
 }
